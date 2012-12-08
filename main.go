@@ -1,6 +1,7 @@
+// A simple chat relay that forwards incoming messages to everyone in a group.
+// Mostly copied from the example code in github.com/mattn/go-xmp.
 package main
 
-// Mostly copied from the example code in github.com/mattn/go-xmp.
 
 import (
     "fmt"
