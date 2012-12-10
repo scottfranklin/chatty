@@ -12,6 +12,7 @@ import (
     "log"
     "os"
     "strings"
+    "time"
 )
 
 var server   = flag.String("server", "talk.google.com:443", "server")
@@ -166,6 +167,13 @@ func main() {
         log.Fatal(err)
     }
     log.Println("Connected.");
+
+    go func() {
+        t := time.Tick(1 * time.Minute)
+        for _ = range t {
+            talk.Present()
+        }
+    }()
 
     for {
         chat, err := talk.Recv()
