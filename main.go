@@ -45,12 +45,15 @@ func handle(client *xmpp.Client, chat xmpp.Chat) {
     others := true
 
     command_bits := strings.SplitN(chat.Text, " ", 2)
-    command := command_bits[0]
+    command := ""
+    if len(command_bits) > 0 {
+        command = command_bits[0]
+    }
     arg := ""
     if len(command_bits) > 1 {
         arg = command_bits[1]
     }
-    if command[0] == '/' {
+    if command != "" && command[0] == '/' {
         switch command {
         case "/whois":
             self = true
